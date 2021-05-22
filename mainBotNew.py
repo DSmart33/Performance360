@@ -820,10 +820,17 @@ async def test(ctx):
     dayMonthYear = today.strftime('%m/%d/%Y')
     dayOfTheWeek = today.strftime("%A").lower()
 
+    numberOfDaysout = 1
+
+    # Skip sunday (no classes)
+    if dayOfTheWeek == 'sunday':
+        numberOfDaysout = 2
+        dayOfTheWeek = 'monday'
+
     # For each user
     for idx, user in enumerate(userConfig):        
         if (userConfig[user]['classRegistration'][dayOfTheWeek]['shouldRun'].lower() == "true") and (userConfig[user]['discord'] == 219983475833307136):
-            await postResults(await register(userConfig[user]['classRegistration'][dayOfTheWeek]['24hr_start_time'], userConfig[user]['classRegistration'][dayOfTheWeek]['days_out'], users[idx].getSession(), users[idx].getDataToken(), users[idx].getUserId()))
+            await postResults(await register(userConfig[user]['classRegistration'][dayOfTheWeek]['24hr_start_time'], numberOfDaysout, users[idx].getSession(), users[idx].getDataToken(), users[idx].getUserId()))
         else:
             await postToChannel("<@" + str(userConfig[user]['discord']) + "> " + "- you cannot use this command", '')
 
