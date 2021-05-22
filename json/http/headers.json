@@ -1,0 +1,18 @@
+{
+    "p360_headers": {
+        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Length": "66",
+        "Host": "p360ppt.com",
+        "Connection": "Keep-Alive",
+        "Accept-Encoding": "gzip",
+        "User-Agent": "okhttp/3.10.0"
+    },
+    "mindbody_headers": {
+        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Length": "59",
+        "Host": "p360ppt.com",
+        "Connection": "Keep-Alive",
+        "Accept-Encoding": "gzip",
+        "User-Agent": "okhttp/3.10.0"
+    }
+}

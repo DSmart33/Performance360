@@ -1,0 +1,10 @@
+API: https://perform-360.com/wp-json/
+
+Posts: https://perform-360.com/wp-json/wp/v2/posts
+
+workouts:https://perform-360.com/this-weeks-training-11-16-11-22/
+and https://perform-360.com/wp-json/wp/v2/posts/36932
+and https://perform-360.com/wp-content/uploads/2020/01/11_23.jpg
+
+
+https://clients.mindbodyonline.com/classic/mainclass?studioid=16575&tg=&vt=&lvl=&stype=-7&view=week&trn=0&page=&catid=&prodid=&date=11%2f21%2f2020&classid=0&prodGroupId=&sSU=&optForwardingLink=&qParam=&justloggedin=&nLgIn=&pMode=0&loc=1

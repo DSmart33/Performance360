@@ -1,0 +1,65 @@
+{
+    "p360_admins": {
+        "":
+    },
+    "discord_client": {
+        "": ""
+    },
+    "channel_ids": {
+        "general": ,
+        "workouts": ,
+        "motivation": ,
+        "classes_pb": ,
+        "classes_bp": ,
+        "classes_ob":
+    },
+    "urls": {
+        "posts": "https://perform-360.com/wp-json/wp/v2/posts"
+    },
+    "workouts_embed": {
+        "channel": ,
+        "borderColor": "0x023070",
+        "thumbnail": "https://yt3.ggpht.com/a/AATXAJwimlFbt3DRFFGEnTqjw2yPbetnMI6mpDdykurM=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "daily_update_embed": {
+        "channel": ,
+        "borderColor": "0x023070",
+        "thumbnail": "https://perform-360.com/wp-content/uploads/2018/04/dave_coach_thumb-450x450.jpg"
+    },
+    "schedule_embed": {
+        "classes_pb": ,
+        "classes_bp": ,
+        "classes_ob": ,
+        "borderColor": "0x023070",
+        "thumbnail": "https://w7.pngwing.com/pngs/926/964/png-transparent-google-calendar-computer-icons-agenda-calendar-time-calendar-date.png",
+        "monday": "https://i0.wp.com/mondaydieter.com/wp-content/uploads/2018/01/cropped-monday-d.png",
+        "tuesday": "https://c0.klipartz.com/pngpicture/178/888/gratis-png-taco-martes-cocina-mexicana-salsa-ensalada-de-taco-taco-martes.png",
+        "wednesday": "https://ctp-media.imigino.com/image/1/process/nullxnull?source=https://d21ow6duzgtlgm.cloudfront.net/wp-content/uploads/sites/9/2016/10/wednesday.jpg",
+        "thursday": "https://i.ytimg.com/vi/9I-CORTWgyM/maxresdefault.jpg",
+        "friday": "https://st2.depositphotos.com/3969727/8963/v/600/depositphotos_89639972-stock-illustration-friday-happy-end-of-the.jpg",
+        "saturday": "https://www.legalcrimeradio.com/resources/Saturday-Red-Dots-Name-Design-PNG.png",
+        "sunday": "https://logos.flamingtext.com/Name-Logos/Sunday-design-china-name.png"
+    },
+    "pinned_message": {
+        "borderColor": "0x023070",
+        "thumbnail": "https://yt3.ggpht.com/a/AATXAJwimlFbt3DRFFGEnTqjw2yPbetnMI6mpDdykurM=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "attention_embed": {
+        "borderColor": "0xa80000",
+        "thumbnail": "https://minutes.co/wp-content/uploads/2019/04/audiences-attention.png"
+    },
+    "admin_embed": {
+        "borderColor": "0x987654",
+        "thumbnail": "https://www.jing.fm/clipimg/full/283-2839767_cartoon-transparent-tool-box.png"
+    },
+    "nightly_schedule_embed": {
+        "channel": ,
+        "borderColor": "0xFF0000",
+        "thumbnail": "https://www.riceville.k12.ia.us/wp-content/uploads/2019/06/calendar.png"
+    },
+    "schedule_request_embed": {
+        "channel": ,
+        "borderColor": "0xFF0000",
+        "thumbnail": "https://www.riceville.k12.ia.us/wp-content/uploads/2019/06/calendar.png"
+    }
+}
