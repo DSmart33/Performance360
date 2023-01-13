@@ -4,7 +4,7 @@ import asyncio
 import requests
 from datetime import datetime, timezone, timedelta
 
-async def register(startTime, daysOut, activeSession, dataToken, userID):
+async def register(startTime, daysOut, activeSession, dataToken, userID, discordUser):
     # Load the config file
     with open('json/config.json') as f:
         configFile = json.load(f)
@@ -78,7 +78,7 @@ async def register(startTime, daysOut, activeSession, dataToken, userID):
             json_data = json.loads(isSubscribed.text)
 
             # Save the response
-            result.append({"data":"<@" + str(configFile['p360_admins']['talker9']) + "> " + json_data['data']['message'], "embed":"register_for_class_embed"})
+            result.append({"data":"<@" + discordUser + "> " + json_data['data']['message'], "embed":"register_for_class_embed"})
 
             # Close the session
             #s.close()

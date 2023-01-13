@@ -71,10 +71,14 @@ for idx, user in enumerate(userConfig):
     # Login to p360 and store the dataToken
     p360 = users[idx].getSession().post("https://p360ppt.com/granjur/api/auth/login", json=userConfig[user]['login']['p360ppt'], headers=headersConfig['p360_headers'])
     json_response = json.loads(p360.text)
+    #print(str(json_response))
+
     users[idx].setDataToken(json_response['data']['token'])
     # Login to mindbody and store the user id
     mindbody = users[idx].getSession().post("https://p360ppt.com/granjur/api/auth/mind-body/get-client-id?token=" + users[idx].getDataToken(), json=userConfig[user]['login']['mindbody'], headers=headersConfig['mindbody_headers'])
     json_data = json.loads(mindbody.text)
+    #print(str(json_data))
+
     users[idx].setUserId(json_data['data']['ID'])
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -82,6 +86,8 @@ for idx, user in enumerate(userConfig):
 # On startup
 #@client.event
 #async def on_ready():
+#    await postResults(await getDailyUpdate())
+#    print("finished")
 
 #
 # Announce scheduled Jobs at 6:30PM PST
@@ -138,7 +144,7 @@ async def registerForClass():
     # For each user
     for idx, user in enumerate(userConfig):        
         if userConfig[user]['classRegistration'][dayOfTheWeek]['shouldRun'].lower() == "true":
-            await postResults(await register(userConfig[user]['classRegistration'][dayOfTheWeek]['24hr_start_time'], userConfig[user]['classRegistration'][dayOfTheWeek]['days_out'], users[idx].getSession(), users[idx].getDataToken(), users[idx].getUserId()))
+            await postResults(await register(userConfig[user]['classRegistration'][dayOfTheWeek]['24hr_start_time'], userConfig[user]['classRegistration'][dayOfTheWeek]['days_out'], users[idx].getSession(), users[idx].getDataToken(), users[idx].getUserId(), str(userConfig[user]['discord'])))
         else:
             await postToChannel("<@" + str(userConfig[user]['discord']) + "> " + "registration for " + dayOfTheWeek.capitalize() + " classes is disabled", 'register_for_class_embed')
 
@@ -163,12 +169,12 @@ async def registerForClassBackup():
     # For each user
     for idx, user in enumerate(userConfig):        
         if userConfig[user]['classRegistration'][dayOfTheWeek]['shouldRun'].lower() == "true":
-            await postResults(await register(userConfig[user]['classRegistration'][dayOfTheWeek]['24hr_start_time'], userConfig[user]['classRegistration'][dayOfTheWeek]['days_out'], users[idx].getSession(), users[idx].getDataToken(), users[idx].getUserId()))
+            await postResults(await register(userConfig[user]['classRegistration'][dayOfTheWeek]['24hr_start_time'], userConfig[user]['classRegistration'][dayOfTheWeek]['days_out'], users[idx].getSession(), users[idx].getDataToken(), users[idx].getUserId(), str(userConfig[user]['discord'])))
         else:
             await postToChannel("<@" + str(userConfig[user]['discord']) + "> " + "registration for " + dayOfTheWeek.capitalize() + " classes is disabled", 'register_for_class_embed')
 
 # getTodaysWorkout - 12:00 AM PST
-@aiocron.crontab('30 8 * * mon,tue,wed,thu,fri,sat,sun')
+#@aiocron.crontab('30 8 * * mon,tue,wed,thu,fri,sat,sun')
 async def getTodaysWorkoutMotivation():
     await postResults(await getDailyUpdate())
 
@@ -177,6 +183,7 @@ async def purgeChannel(channelToPurge, howManyMessages):
     await client.get_channel(channelToPurge).purge(limit=howManyMessages, check=lambda msg: not msg.pinned)
 
 async def postResults(results):
+    #print(results)
     for result in results:
             await postToChannel(result['data'], result['embed'])
 
@@ -829,8 +836,8 @@ async def test(ctx):
 
     # For each user
     for idx, user in enumerate(userConfig):        
-        if (userConfig[user]['classRegistration'][dayOfTheWeek]['shouldRun'].lower() == "true") and (userConfig[user]['discord'] == 219983475833307136):
-            await postResults(await register(userConfig[user]['classRegistration'][dayOfTheWeek]['24hr_start_time'], numberOfDaysout, users[idx].getSession(), users[idx].getDataToken(), users[idx].getUserId()))
+        if userConfig[user]['classRegistration'][dayOfTheWeek]['shouldRun'].lower() == "true":
+            await postResults(await register(userConfig[user]['classRegistration'][dayOfTheWeek]['24hr_start_time'], numberOfDaysout, users[idx].getSession(), users[idx].getDataToken(), users[idx].getUserId(), str(userConfig[user]['discord'])))
         else:
             await postToChannel("<@" + str(userConfig[user]['discord']) + "> " + "- you cannot use this command", '')
 
@@ -865,6 +872,12 @@ async def test(ctx):
 
 # Login and run the client with the provided token
 client.run(config['discord_client']['token'])
+
+# test the active connection
+@client.command()
+async def workout(ctx):
+    await postResults(await getDailyUpdate())
+    print("finished")
 
 # ---------------------------------------------------------------------
 
